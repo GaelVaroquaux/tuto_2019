@@ -63,3 +63,42 @@ plt.subplots_adjust(top=.96)
 
 plt.savefig('polynomial_overfit.pdf', facecolor='none', edgecolor='none')
 
+# %%
+# A figure with the true model and the estimated one
+
+plt.figure(figsize=[.5 * 6.4, .5 * 4.8])
+plt.scatter(x, y, s=20, color='k')
+plt.plot(t, model.predict(t.reshape(-1, 1)), color='C3',
+         label='$\hat{f}$')
+
+plt.plot(t, f(t), 'k--', label='$f^{\star}$')
+style_figs.no_axis()
+plt.legend(loc='upper center', borderaxespad=0, borderpad=0, fontsize=26)
+plt.subplots_adjust(top=.96)
+
+plt.savefig('polynomial_overfit_simple.pdf', facecolor='none', edgecolor='none')
+
+# %%
+# Assymptotic settings
+
+rng = np.random.RandomState(0)
+x = 2 * rng.rand(10 * N_SAMPLES) - 1
+
+y = f(x) + .4 * rng.normal(size=10 * N_SAMPLES)
+
+
+model = make_pipeline(PolynomialFeatures(degree=1), LinearRegression())
+model.fit(x.reshape(-1, 1), y)
+
+plt.figure(figsize=[.5 * 6.4, .5 * 4.8])
+plt.scatter(x, y, s=20, color='k', alpha=.3)
+plt.plot(t, model.predict(t.reshape(-1, 1)), color='C0',
+         label='$\hat{f} \\approx f^{\star}$')
+
+plt.plot(t, f(t), 'k--', label='$g$')
+style_figs.no_axis()
+plt.legend(loc='upper center', borderaxespad=0, borderpad=0, fontsize=26)
+plt.subplots_adjust(top=.96)
+
+plt.savefig('polynomial_overfit_assymptotic.pdf', facecolor='none', edgecolor='none')
+
