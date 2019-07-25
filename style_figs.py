@@ -10,6 +10,7 @@ plt.rcParams['ytick.labelsize'] = 20
 plt.rcParams['figure.titlesize'] = 15
 plt.rcParams['font.size'] = 20
 plt.rcParams['axes.labelsize'] = 20
+plt.rcParams['axes.facecolor'] = 'none'
 plt.rcParams['legend.fontsize'] = 18
 plt.rcParams['lines.linewidth'] = 3
 plt.rcParams['figure.figsize'] = [.8 * 6.4, .8 * 4.8]

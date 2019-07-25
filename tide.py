@@ -169,7 +169,6 @@ for d in (10, 100, 1000):
 # %%
 # Cosine regression
 
-
 plt.figure()
 plt.plot(t, y, color='.7')
 plt.plot(t_train, y_train, color='.4')
@@ -191,3 +190,14 @@ for d in (10, 100, 1000):
     plt.savefig('tide_periodic_%d.pdf' % d, facecolor='none',
                 edgecolor='none')
 
+
+# %%
+# Long plot of tide
+
+
+plt.figure(figsize=[12, 2])
+
+plt.plot(timeserie[:5 * N_SAMPLES], color='k', linewidth=1.5)
+
+style_figs.no_axis()
+plt.savefig('tide_long.pdf', facecolor='none', edgecolor='none')
